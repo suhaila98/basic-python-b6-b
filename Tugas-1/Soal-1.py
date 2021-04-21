@@ -1,0 +1,5 @@
+nama = input("Masukkan nama kamu :")
+umur = input("Masukkan umur kamu :")
+tinggi = input("Masukkan tinggi kamu :")
+text = "Halo nama saya {}, umur saya {} tahun, tinggi saya {} cm".format(nama,umur,tinggi[:5])
+print(text)
