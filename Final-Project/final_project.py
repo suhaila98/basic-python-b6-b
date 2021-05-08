@@ -1,4 +1,4 @@
-pwd = "********"
+pwd = "*********"
 
 #password diatas
 from email.mime.multipart import MIMEMultipart
