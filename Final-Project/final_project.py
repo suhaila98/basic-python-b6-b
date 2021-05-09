@@ -1,25 +1,23 @@
-pwd = "*********"
+pwd = "suhaila1998"
+
+
 
 #password diatas
+#pwd = "********"
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 import smtplib
 
 f =  open('emails.txt','r').readlines()
-for n in f:
-     emails = n.rstrip()
-
 
 server = smtplib.SMTP('smtp.gmail.com', 587)
 server.starttls()
 server.login("aylaachmad50@gmail.com",pwd)
 
-
 body = "Foto pantai terlampir dibawah ya"
 sender = "aylaachmad50@gmail.com"
-to = emails
-recipients = [to[0:21], to[22:41]]
+recipients = f
 print(recipients)
 msg = MIMEMultipart()
 with open('pantai.jpg', 'rb') as image_file:
@@ -27,7 +25,6 @@ with open('pantai.jpg', 'rb') as image_file:
 msg.attach(MIMEText(body))
 msg['Subject'] = 'Test Kirim Email'
 msg['From'] = 'aylaachmad50@gmail.com'
-
 
 try:
    server.sendmail(sender, recipients, msg.as_string())
