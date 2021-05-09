@@ -9,25 +9,25 @@ from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 import smtplib
 
-f =  open('emails.txt','r').readlines()
-
+f =  open('emails.txt','r')
+email = f.readlines()
 server = smtplib.SMTP('smtp.gmail.com', 587)
 server.starttls()
 server.login("aylaachmad50@gmail.com",pwd)
 
 body = "Foto pantai terlampir dibawah ya"
 sender = "aylaachmad50@gmail.com"
-recipients = f
-print(recipients)
+
 msg = MIMEMultipart()
 with open('pantai.jpg', 'rb') as image_file:
     msg.attach(MIMEImage(image_file.read()))
 msg.attach(MIMEText(body))
 msg['Subject'] = 'Test Kirim Email'
 msg['From'] = 'aylaachmad50@gmail.com'
+msg['To'] = (', ').join(email)
 
 try:
-   server.sendmail(sender, recipients, msg.as_string())
+   server.sendmail(sender, email, msg.as_string())
    print('Message Sent Succesfully')
 except:
    print('There Was An Error While Sending The Message')
